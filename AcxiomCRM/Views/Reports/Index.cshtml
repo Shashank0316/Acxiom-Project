@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<h1>Reports</h1>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Pipeline Report</h5>
+                <p class="card-text">View all opportunities, their stages, and expected close dates.</p>
+                <a href="@Url.Action("Pipeline", "Reports")" class="btn btn-primary">View Pipeline</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Lead Conversion Report</h5>
+                <p class="card-text">View all leads, their statuses, and expected values.</p>
+                <a href="@Url.Action("LeadConversion", "Reports")" class="btn btn-primary">View Conversions</a>
+            </div>
+        </div>
+    </div>
+</div>

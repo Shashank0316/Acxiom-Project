@@ -1,0 +1,9 @@
+@model AcxiomCRM.Models.Opportunity
+<h2>Create Opportunity</h2>
+<form asp-action='Create'>
+    <div class='form-group'><label>Name</label><input asp-for='OpportunityName' class='form-control' /></div>
+    <div class='form-group'><label>Amount</label><input asp-for='Amount' class='form-control' /></div>
+    <div class='form-group'><label>Probability</label><input asp-for='Probability' class='form-control' /></div>
+    <div class='form-group'><label>Close Date</label><input asp-for='ExpectedCloseDate' type='date' class='form-control' /></div>
+    <button type='submit' class='btn btn-primary mt-2'>Save</button>
+</form>

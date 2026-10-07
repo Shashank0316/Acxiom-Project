@@ -1,0 +1,59 @@
+=========================================
+AcxiomCRM - User Manual
+=========================================
+
+Welcome to AcxiomCRM! This manual provides step-by-step instructions on how to navigate and utilize the system effectively.
+
+1. LOGGING IN
+-------------
+When you first navigate to the application, you will be prompted to log in. 
+Depending on your assigned role, you will have different levels of access:
+- Admin: Has full access to view, edit, and manage all records across the company.
+- Manager: Has full visibility into the team's data, pipeline, and reports.
+- Sales Executive: Can only view and modify Leads, Customers, and Opportunities explicitly assigned to them.
+
+Default Accounts:
+- Admin: admin@acxiomcrm.com (Password: Admin@123)
+- Manager: manager@acxiomcrm.com (Password: Manager@123)
+- Sales Exec: sales@acxiomcrm.com (Password: Sales@123)
+
+
+2. THE DASHBOARD
+----------------
+Upon logging in, you will be greeted by the Dashboard. 
+- At the top, you will see key metrics: Total Leads, Total Customers, and Total Opportunities. (Note: These numbers reflect only the data you are authorized to see).
+- Below the metrics are interactive charts powered by Chart.js.
+  - "Leads by Status": A pie chart breaking down the current standing of your leads.
+  - "Opportunity Pipeline": A bar chart displaying the expected financial value of opportunities at each stage.
+
+
+3. MANAGING LEADS
+-----------------
+Leads are potential clients.
+- To add a lead, click "Leads" in the navigation bar and select "Create New". 
+- Fill in the required contact information and expected value.
+- When a Lead shows intent to buy, you should edit their status to "Qualified".
+- Converting a Lead: Once a Lead is Qualified, click the "Convert" button. The system will automatically create a new Customer record and an open Opportunity for them, maintaining a flawless transition without data entry duplication.
+
+
+4. MANAGING CUSTOMERS & OPPORTUNITIES
+-------------------------------------
+- Customers: The "Customers" tab lists all converted leads or directly added clients. Here you can track company information and contact details.
+- Opportunities: The "Opportunities" tab tracks potential deals. You must assign a "Stage" (e.g., Prospecting, Proposal, Negotiation) and a "Probability %" of closing. 
+- Ensure that the "Expected Close Date" is kept up to date. The system prevents you from setting this date in the past for active opportunities.
+
+
+5. FOLLOW-UPS & ACTIVITIES
+--------------------------
+Use the "Follow-Ups" and "Activities" tabs to schedule calls, meetings, or track emails sent to clients. Keeping these logged ensures your Manager has visibility into the effort being made on accounts.
+
+
+6. REPORTS
+----------
+Click on the "Reports" tab in the navigation bar to access standard business intelligence:
+- Pipeline Report: A tabular view of all ongoing opportunities, prioritized by close date.
+- Lead Conversion Report: A historical log of leads, showing which ones successfully became paying customers.
+
+7. AUDIT TRAIL
+--------------
+Every time you create or edit a record, the system logs the action. Administrators can review the Audit Logs to see who changed what and when.

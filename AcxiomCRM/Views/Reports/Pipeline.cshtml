@@ -1,0 +1,35 @@
+@model IEnumerable<AcxiomCRM.Models.Opportunity>
+@{
+    ViewData["Title"] = "Pipeline Report";
+}
+
+<h1>Pipeline Report</h1>
+<a href="@Url.Action("Index", "Reports")" class="btn btn-secondary mb-3">Back to Reports</a>
+
+<table class="table table-striped table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Opportunity Name</th>
+            <th>Customer</th>
+            <th>Amount</th>
+            <th>Probability</th>
+            <th>Stage</th>
+            <th>Expected Close Date</th>
+            <th>Assigned To</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var opp in Model)
+        {
+            <tr>
+                <td>@opp.OpportunityName</td>
+                <td>@(opp.Customer?.CustomerName ?? "-")</td>
+                <td>@opp.Amount.ToString("C")</td>
+                <td>@opp.Probability%</td>
+                <td>@opp.Stage</td>
+                <td>@opp.ExpectedCloseDate.ToShortDateString()</td>
+                <td>@(opp.AssignedTo?.Email ?? "-")</td>
+            </tr>
+        }
+    </tbody>
+</table>

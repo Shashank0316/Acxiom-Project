@@ -1,0 +1,23 @@
+@model AcxiomCRM.Models.Opportunity
+<h2>Edit Opportunity</h2>
+<form asp-action='Edit'>
+    <input type='hidden' asp-for='OpportunityId' />
+    <input type='hidden' asp-for='AssignedToId' />
+    <div class='form-group'><label>Name</label><input asp-for='OpportunityName' class='form-control' /></div>
+    <div class='form-group'><label>Amount</label><input asp-for='Amount' class='form-control' /></div>
+    <div class='form-group'><label>Stage</label>
+        <select asp-for='Stage' class='form-control'>
+            <option value='Qualification'>Qualification</option>
+            <option value='Proposal'>Proposal</option>
+            <option value='Negotiation'>Negotiation</option>
+            <option value='Closed Won'>Closed Won</option>
+            <option value='Closed Lost'>Closed Lost</option>
+        </select>
+    </div>
+    <div class='form-group'><label>Status</label>
+        <select asp-for='Status' class='form-control'>
+            <option value='Open'>Open</option><option value='Closed'>Closed</option>
+        </select>
+    </div>
+    <button type='submit' class='btn btn-primary mt-2'>Save</button>
+</form>

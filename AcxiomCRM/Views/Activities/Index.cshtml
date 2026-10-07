@@ -1,0 +1,12 @@
+@model IEnumerable<AcxiomCRM.Models.Activity>
+<h2>Activities</h2>
+<table class='table'>
+    <thead><tr><th>Date</th><th>Type</th><th>Subject</th></tr></thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.ActivityDate.ToShortDateString()</td><td>@item.ActivityType</td><td>@item.Subject</td>
+        </tr>
+}
+    </tbody>
+</table>

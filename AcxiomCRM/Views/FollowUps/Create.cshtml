@@ -1,0 +1,14 @@
+@model AcxiomCRM.Models.FollowUp
+<h2>Schedule Follow-Up</h2>
+<form asp-action='Create'>
+    <input type='hidden' name='CustomerId' value='@ViewBag.CustomerId' />
+    <input type='hidden' name='LeadId' value='@ViewBag.LeadId' />
+    <div class='form-group'><label>Date</label><input asp-for='FollowUpDate' type='date' class='form-control' /></div>
+    <div class='form-group'><label>Type</label>
+        <select asp-for='FollowUpType' class='form-control'>
+            <option value='Call'>Call</option><option value='Email'>Email</option><option value='Meeting'>Meeting</option>
+        </select>
+    </div>
+    <div class='form-group'><label>Remarks</label><textarea asp-for='Remarks' class='form-control'></textarea></div>
+    <button type='submit' class='btn btn-primary mt-2'>Save</button>
+</form>

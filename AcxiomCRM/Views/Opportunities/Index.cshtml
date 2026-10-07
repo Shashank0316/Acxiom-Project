@@ -1,0 +1,14 @@
+@model IEnumerable<AcxiomCRM.Models.Opportunity>
+<h2>Opportunities (Pipeline: $@ViewBag.TotalPipelineValue)</h2>
+<a asp-action='Create' class='btn btn-primary'>Create New</a>
+<table class='table'>
+    <thead><tr><th>Name</th><th>Amount</th><th>Stage</th><th>Probability</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.OpportunityName</td><td>@item.Amount</td><td>@item.Stage</td><td>@item.Probability%</td><td>@item.Status</td>
+            <td><a asp-action='Edit' asp-route-id='@item.OpportunityId'>Edit</a></td>
+        </tr>
+}
+    </tbody>
+</table>

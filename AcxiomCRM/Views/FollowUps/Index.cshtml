@@ -1,0 +1,13 @@
+@model IEnumerable<AcxiomCRM.Models.FollowUp>
+<h2>Follow-Ups</h2>
+<table class='table'>
+    <thead><tr><th>Date</th><th>Type</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.FollowUpDate.ToShortDateString()</td><td>@item.FollowUpType</td><td>@item.Status</td>
+            <td><a asp-action='Edit' asp-route-id='@item.FollowUpId'>Edit</a></td>
+        </tr>
+}
+    </tbody>
+</table>

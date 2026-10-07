@@ -1,0 +1,92 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container-fluid mt-4">
+    <h1 class="mb-4">CRM Dashboard</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Leads</h5>
+                    <p class="card-text display-4">@ViewBag.TotalLeads</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Customers</h5>
+                    <p class="card-text display-4">@ViewBag.TotalCustomers</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Opportunities</h5>
+                    <p class="card-text display-4">@ViewBag.TotalOpportunities</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Leads by Status</h5>
+                    <canvas id="leadsChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Opportunity Pipeline Value by Stage</h5>
+                    <canvas id="oppsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctxLeads = document.getElementById('leadsChart').getContext('2d');
+            var leadsChart = new Chart(ctxLeads, {
+                type: 'pie',
+                data: {
+                    labels: @Html.Raw(Json.Serialize(ViewBag.LeadsByStatusLabels)),
+                    datasets: [{
+                        data: @Html.Raw(Json.Serialize(ViewBag.LeadsByStatusData)),
+                        backgroundColor: ['#007bff', '#28a745', '#dc3545', '#ffc107', '#17a2b8', '#6c757d']
+                    }]
+                }
+            });
+
+            var ctxOpps = document.getElementById('oppsChart').getContext('2d');
+            var oppsChart = new Chart(ctxOpps, {
+                type: 'bar',
+                data: {
+                    labels: @Html.Raw(Json.Serialize(ViewBag.OppByStageLabels)),
+                    datasets: [{
+                        label: 'Pipeline Value',
+                        data: @Html.Raw(Json.Serialize(ViewBag.OppByStageData)),
+                        backgroundColor: '#17a2b8'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+}

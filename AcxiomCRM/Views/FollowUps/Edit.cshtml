@@ -1,0 +1,14 @@
+@model AcxiomCRM.Models.FollowUp
+<h2>Edit Follow-Up</h2>
+<form asp-action='Edit'>
+    <input type='hidden' asp-for='FollowUpId' />
+    <input type='hidden' asp-for='CustomerId' />
+    <input type='hidden' asp-for='LeadId' />
+    <input type='hidden' asp-for='AssignedToId' />
+    <div class='form-group'><label>Status</label>
+        <select asp-for='Status' class='form-control'>
+            <option value='Planned'>Planned</option><option value='Completed'>Completed</option>
+        </select>
+    </div>
+    <button type='submit' class='btn btn-primary mt-2'>Save</button>
+</form>

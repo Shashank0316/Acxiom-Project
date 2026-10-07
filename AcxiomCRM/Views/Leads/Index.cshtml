@@ -1,0 +1,56 @@
+@model AcxiomCRM.Models.PagedResult<AcxiomCRM.Models.Lead>
+<h2>Leads</h2>
+<a asp-action='Create' class='btn btn-primary mb-3'>Create New</a>
+
+<form asp-action="Index" method="get" class="form-inline mb-3">
+    <input type="text" name="searchString" value="@Model.SearchString" class="form-control mr-2" placeholder="Search name/email..." />
+    <input type="text" name="companyFilter" value="@Model.CompanyFilter" class="form-control mr-2" placeholder="Company..." />
+    <select name="statusFilter" class="form-control mr-2">
+        <option value="">All Statuses</option>
+        <option value="New" selected="@(Model.StatusFilter == "New" ? "selected" : null)">New</option>
+        <option value="Qualified" selected="@(Model.StatusFilter == "Qualified" ? "selected" : null)">Qualified</option>
+        <option value="Converted" selected="@(Model.StatusFilter == "Converted" ? "selected" : null)">Converted</option>
+    </select>
+    <button type="submit" class="btn btn-secondary">Filter</button>
+</form>
+
+@if(TempData["Success"] != null) {
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if(TempData["Error"] != null) {
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<table class='table'>
+    <thead><tr><th>Name</th><th>Email</th><th>Company</th><th>Status</th><th>Assigned To</th><th>Actions</th></tr></thead>
+    <tbody>
+@foreach (var item in Model.Items) {
+        <tr>
+            <td>@item.LeadName</td><td>@item.Email</td><td>@item.CompanyName</td><td>@item.Status</td>
+            <td>@(item.AssignedTo?.Name ?? "Unassigned")</td>
+            <td>
+                <a asp-action='Edit' asp-route-id='@item.LeadId'>Edit</a> |
+                @if(item.Status == "Qualified") {
+                    <form asp-action='Convert' asp-route-id='@item.LeadId' method='post' style='display:inline;'>
+                        <button type='submit' class='btn btn-sm btn-success'>Convert</button>
+                    </form>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <span>Page @Model.PageNumber of @Model.TotalPages (Total Records: @Model.TotalCount)</span>
+    <div>
+        @if (Model.HasPreviousPage)
+        {
+            <a asp-action="Index" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-searchString="@Model.SearchString" class="btn btn-sm btn-outline-primary">Previous</a>
+        }
+        @if (Model.HasNextPage)
+        {
+            <a asp-action="Index" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-searchString="@Model.SearchString" class="btn btn-sm btn-outline-primary">Next</a>
+        }
+    </div>
+</div>
